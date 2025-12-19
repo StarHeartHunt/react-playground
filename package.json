@@ -1,6 +1,7 @@
 {
   "name": "react-playground",
   "private": true,
+  "packageManager": "pnpm@10.26.1",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
