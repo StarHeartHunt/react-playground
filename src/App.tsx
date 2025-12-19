@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Editor, useMonaco } from "@monaco-editor/react";
 import { shikiToMonaco } from "@shikijs/monaco";
@@ -72,12 +72,10 @@ createRoot(document.getElementById("preview-root")!).render(<App />);`;
 export default function App() {
   const monaco = useMonaco();
   const [inputCode, setInputCode] = useState(defaultCode);
-  const domId = useRef(Math.random());
+  const [domId, setDomId] = useState(() => Math.random());
 
   useEffect(() => {
     if (!inputCode) return;
-
-    domId.current = Math.random();
 
     const modules: Record<string, string> = {
       "/main.tsx": typescript.transpile(inputCode, {
@@ -222,11 +220,14 @@ export default function App() {
           defaultPath="index.tsx"
           defaultLanguage="typescript"
           defaultValue={defaultCode}
-          onChange={(value) => setInputCode(value!)}
+          onChange={(value) => {
+            setDomId(Math.random());
+            setInputCode(value!);
+          }}
         />
       </div>
       <div className="preview w-1/2">
-        <div id="preview-root" key={domId.current}></div>
+        <div id="preview-root" key={domId}></div>
       </div>
     </div>
   );
