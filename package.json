@@ -15,7 +15,6 @@
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@tailwindcss/vite": "^4.1.18",
-    "memfs": "^4.51.1",
     "monaco-editor": "^0.55.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
